@@ -40,7 +40,7 @@ namespace pizza {
     // block text with spaces
 
     //% block
-    export function pizzaGame() {
+    export function catchThePizza() {
         
         let pizza2: Sprite = null
         let duck = sprites.create(img`
