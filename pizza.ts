@@ -1,5 +1,6 @@
 
 //% color="#fc8c03" icon="\uf447"
+//% groups="['Games']"
 namespace pizza {
 
 
@@ -41,6 +42,7 @@ namespace pizza {
     // block text with spaces
 
     //% block
+    //% group="Games"
     export function catchThePizza() {
         
         let pizza2: Sprite = null
