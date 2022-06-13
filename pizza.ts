@@ -1,5 +1,5 @@
 
-//% color="#fc8c03" icon="\uf818"
+//% color="#fc8c03" icon="\uf447"
 namespace pizza {
 
 
