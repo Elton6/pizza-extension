@@ -1,4 +1,5 @@
-//% color="#fc8c03" weight=100
+
+//% color="#fc8c03" icon="\uf818"
 namespace pizza {
 
 
