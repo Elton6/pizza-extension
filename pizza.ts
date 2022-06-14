@@ -110,6 +110,92 @@ namespace pizza {
         
 
     }
+    //% block
+    //% group="Games"
+    export function shootThePizza() {
+        
+        sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+            otherSprite.destroy()
+            info.changeScoreBy(1)
+        })
+        sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+            otherSprite.destroy()
+            info.changeLifeBy(-1)
+        })
+        let pizza_space: Sprite = null
+        let bullet: Sprite = null
+        let space_ship: Sprite = null
+        space_ship = sprites.create(img`
+    . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 f 5 5 5 5 5 5 5 5 f 5 5 . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+    . 5 5 f 5 5 5 5 5 5 5 5 f 5 5 . 
+    . 5 5 5 f f f f f f f f 5 5 5 . 
+    . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
+    `, SpriteKind.Player)
+        space_ship.setStayInScreen(true)
+        controller.moveSprite(space_ship, 200, 200)
+        info.setScore(0)
+        info.setLife(5)
+        game.onUpdateInterval(1000, function () {
+            pizza_space = sprites.create(img`
+        . . . . . . b b b b . . . . . . 
+        . . . . . . b 4 4 4 b . . . . . 
+        . . . . . . b b 4 4 4 b . . . . 
+        . . . . . b 4 b b b 4 4 b . . . 
+        . . . . b d 5 5 5 4 b 4 4 b . . 
+        . . . . b 3 2 3 5 5 4 e 4 4 b . 
+        . . . b d 2 2 2 5 7 5 4 e 4 4 e 
+        . . . b 5 3 2 3 5 5 5 5 e e e e 
+        . . b d 7 5 5 5 3 2 3 5 5 e e e 
+        . . b 5 5 5 5 5 2 2 2 5 5 d e e 
+        . b 3 2 3 5 7 5 3 2 3 5 d d e 4 
+        . b 2 2 2 5 5 5 5 5 5 d d e 4 . 
+        b d 3 2 d 5 5 5 d d d 4 4 . . . 
+        b 5 5 5 5 d d 4 4 4 4 . . . . . 
+        4 d d d 4 4 4 . . . . . . . . . 
+        4 4 4 4 . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+            pizza_space.setVelocity(-100, 0)
+            pizza_space.setPosition(160, randint(5, 115))
+            pizza_space.setFlag(SpriteFlag.AutoDestroy, true)
+        
+        })
+        controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+            bullet = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 1 1 1 1 . . . . . 
+        . . . . . . . 1 . . . . . . . . 
+        . . . . . . . 1 1 1 1 . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, space_ship, 200, 0)
+        })
+
+
+    }
+    
+    
 
 
 
